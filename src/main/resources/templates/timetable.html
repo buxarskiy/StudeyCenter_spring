@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style>
+        body {
+            background: url('https://static.sello.uz/unsafe/x500/https://static.sello.uz/fm/20230118/31b49d66-fdf8-4952-b44f-db9dbe469e2d.JPEG') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="row">
+        <a class="btn btn-danger" href="/">Back</a>
+        <div class="col-2" th:each="group:${groups}">
+            <a class="btn btn-dark text-white px-5"
+               th:href="|?groupId=${group.id}|"
+               th:text="${group.name}"></a>
+        </div>
+    </div>
+</div>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            <form>
+                <input type="hidden" name="groupId" th:value="${groupId}">
+                <div class="input-group">
+                    <select class="form-control" name="timeTableId">
+                        <option th:value="${timeTable.id}" th:each="timeTable:${timeTables}"
+                                th:text="${timeTable.name}"></option>
+                    </select>
+                    <button class="btn btn-dark">OK</button>
+                </div>
+            </form>
+        </th>
+        <th th:each="lesson:${#numbers.sequence(1,12)}" th:text="${lesson}"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student:${timeTableData}">
+        <td th:text="${student.fullName}"></td>
+        <td th:each="attendance:${student.attendances}" th:text="${attendance}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

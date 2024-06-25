@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style>
+        body {
+            background: url('https://media.istockphoto.com/id/1341785038/photo/business-graphs-charts-and-magnifying-glass-on-table-financial-development-banking-account.jpg?s=612x612&w=0&k=20&c=w7AFU8dx6N2z1P_ZAME8IxYpjK9iaDrWGQ7Ue1T1MpM=') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center">Student Payments</h1>
+    <form th:action="@{/payments/search}" method="post">
+        <input type="date" name="from" placeholder="Search from..." class="search-input">
+        <input type="date" name="to" placeholder="Search to..." class="search-input">
+        <button class="search-button mx-1">Search</button>
+    </form>
+    <table class="table table-dark table-striped mt-4">
+        <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>Paid Amount</th>
+            <th>Payment Type</th>
+            <th>Payment Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="payment : ${payments}">
+            <td th:text="${payment.student.firstName+' '+payment.student.lastName}"></td>
+            <td th:text="${payment.amount}"></td>
+            <td th:text="${payment.payType}"></td>
+            <td th:text="${payment.dateTime}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-danger w-100" href="/">Back</a>
+</div>
+</body>
+</html>

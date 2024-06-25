@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <style>body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background: url('https://images.ctfassets.net/estpihr4wt1v/20shIVmpplwA3X02vZKrhG/4e891c18091b0440d0a775d090b921cb/Shawn_Kennedy_-_What_Is_a_Student_Information_System_Six_Features_of_the_System.png?w=1200&h=630&fit=fill&f=face') no-repeat center center fixed;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #fff;
+    }
+
+    .container {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .student-photo {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        margin: 10px 0;
+        font-size: 24px;
+    }
+
+    p {
+        margin: 5px 0;
+        font-size: 18px;
+    }
+
+    .back-button {
+        background-color: #ff6b6b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: #ff4c4c;
+    }
+
+    .search-input {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+
+    .search-button, .add-payment-button {
+        background: linear-gradient(45deg, #42a5f5, #478ed1);
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-left: 10px;
+    }
+
+    .search-button:hover, .add-payment-button:hover {
+        background: linear-gradient(45deg, #478ed1, #42a5f5);
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    .student-table th, .student-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #fff;
+    }
+
+    .info-button {
+        background: linear-gradient(45deg, #ffb74d, #ff9800);
+        border: none;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .info-button:hover {
+        background: linear-gradient(45deg, #ff9800, #ffb74d);
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="student-info">
+        <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_640.png" alt="Student Photo"
+             class="student-photo">
+        <h1 th:text="${student.getFirstName()+' '+student.getLastName()}"></h1>
+        <p><strong>Phone:</strong> (123) 456-7890</p>
+        <p><strong>Group:</strong> Group A</p>
+        <p th:text="${'Paid:' +student.balance}"><strong>Paid:</strong> $1500</p>
+        <form th:action="@{'/payments/addPaymentPage/'+${student.id}}" method="get">
+            <button class="add-payment-button">Add Payment</button>
+        </form>
+        <button class="back-button my-2 mx-2" onclick="goBack()">Back</button>
+    </div>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

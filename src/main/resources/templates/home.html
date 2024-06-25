@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background: url('https://images.squarespace-cdn.com/content/v1/5bce68b6755be24c93d9e528/1543010247311-8UYL7DNC15MH33E2LCY3/13014_StudLounge_6.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            background-color: rgba(44, 62, 80, 0.9); /* semi-transparent background */
+            height: 100vh;
+            position: fixed;
+            width: 200px;
+            top: 0;
+            left: 0;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-button.groups {
+            background-color: #1abc9c;
+        }
+
+        .nav-button.students {
+            background-color: #3498db;
+        }
+
+        .nav-button.payments {
+            background-color: #f1c40f;
+            color: #333;
+        }
+
+        .nav-button.timetable {
+            background-color: #9b59b6;
+        }
+
+        .nav-button:hover {
+            opacity: 0.8;
+        }
+
+        .main-content {
+            margin-left: 220px; /* Space for the sidebar */
+            width: calc(100% - 220px); /* Adjust width for sidebar */
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: rgba(44, 62, 80, 0.9); /* semi-transparent background */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .center-name {
+            font-size: 1.5em;
+        }
+
+        .home-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px); /* Adjust height for header */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            background-color: rgba(255, 255, 255, 0.8); /* semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .content h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<nav class="sidebar">
+    <button onclick="navigateTo('groups')" class="nav-button groups">Groups</button>
+    <button onclick="navigateTo('students')" class="nav-button students">Students</button>
+    <button onclick="navigateTo('timetable')" class="nav-button timetable">Time Table</button>
+    <button onclick="navigateTo('payments')" class="nav-button payments">Payments</button>
+</nav>
+<div class="main-content">
+    <header class="header">
+        <img src="https://img.freepik.com/free-vector/education-business-logo-template-branding-design-vector-education-center-text_53876-136247.jpg"
+             alt="Training Center Logo" class="logo">
+        <h1 class="center-name">Training Center</h1>
+    </header>
+    <div class="home-page">
+        <div class="content">
+            <h1>Welcome to the Training Center</h1>
+            <p>Your success starts here. Explore our programs and resources to help you achieve your educational
+                goals.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function navigateTo(page) {
+        window.location.href = page;
+    }
+</script>
+
+</body>
+</html>
