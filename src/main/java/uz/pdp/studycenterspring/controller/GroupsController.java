@@ -55,6 +55,7 @@ public class GroupsController {
         return "redirect:/groups";
     }
 
+
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
         groupRepo.deleteById(id);
